@@ -1,6 +1,14 @@
 #include <iostream>
 #include "nullable.h"
 
+class SomeClass {
+public:
+    void doSomething(void) {
+        std::cout << "Doing something..." << std::endl ;
+    }
+} ;
+
+
 int main(int argc, char* argv[]) {
     Nullable<int> integerA ;
 
@@ -8,7 +16,7 @@ int main(int argc, char* argv[]) {
         std::cout << "IntegerA is not set" << std::endl ;
     }
 
-    if (int a = integerA = 45) {
+    if (int a = integerA = new int(45)) {
         std::cout << "IntegerA was setted with value " << a << std::endl ;
     }
 
@@ -18,8 +26,8 @@ int main(int argc, char* argv[]) {
 
     Nullable<int> integerB ;
 
-    // std::cout << int(integerB) << std::endl ; throws the error
-    integerB = 30 ;
+    // std::cout << int(integerB) << std::endl ; throws an error
+    integerB = new int(30) ;
 
     if (!(integerA == integerB)) {
         std::cout << "Are not equals" << std::endl ;
@@ -28,6 +36,11 @@ int main(int argc, char* argv[]) {
     }
 
     std::cout << "Are equals now? " << (integerA == integerB) << std::endl ;
+
+    Nullable<SomeClass> someObject ;
+    // SomeClass(someObject).doSomething() ; throws an error
+    someObject = new SomeClass() ;
+    someObject -> doSomething() ;
 
     return 0 ;
 }
