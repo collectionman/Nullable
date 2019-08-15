@@ -30,6 +30,10 @@ public:
         return (_isSet && value == _value) ;
     }
 
+    friend bool operator == (const ObjectType& value, const Nullable& nullable) {
+        return (nullable._isSet && value == nullable._value) ;
+    }
+
     operator ObjectType() const {
         return get() ;
     }

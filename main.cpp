@@ -5,11 +5,15 @@ int main(int argc, char* argv[]) {
     Nullable<int> integerA ;
 
     if (!integerA) {
-        std::cout << "Integer is not set" << std::endl ;
+        std::cout << "IntegerA is not set" << std::endl ;
     }
 
     if (int a = integerA = 45) {
-        std::cout << "Integer was setted with value " << a << std::endl ;
+        std::cout << "IntegerA was setted with value " << a << std::endl ;
+    }
+
+    if (45 == integerA) {
+        std::cout << "IntergerA is equal to " << 45 << std::endl ;
     }
 
     Nullable<int> integerB ;
