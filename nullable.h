@@ -11,17 +11,17 @@ public:
         return *this ;
     }
 
+    ObjectType operator = (ObjectType* value) {
+        set(value) ;
+        return *(_value) ;
+    }
+
     ObjectType& operator * (void) {
         if (_isSet) return *(_value) ;
     }
 
     ObjectType* operator -> (void) {
         if (_isSet) return _value ;
-    }
-
-    ObjectType operator = (ObjectType* value) {
-        set(value) ;
-        return *(_value) ;
     }
 
     bool operator == (const Nullable& nullable) const {
