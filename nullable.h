@@ -4,7 +4,7 @@ public:
     Nullable(void) : _value(), _isSet(false) {}
     Nullable(ObjectType* value) : _value(value), _isSet(false) {}
     Nullable(const Nullable& nullable) : _value(nullable._value), _isSet(nullable._isSet) {}
-    ~Nullable(void) { reset() ; }
+    ~Nullable(void) { release() ; }
 
     Nullable& operator = (const Nullable& nullable) {
         set(nullable._value) ;
@@ -64,9 +64,9 @@ private:
         throw std::logic_error("Value of nullable is not set.") ;
     }
 
-    void reset() {
+    void release() {
         _isSet = false ;
-        _value = new ObjectType() ;
+        delete _value ;
     }
 
     bool isSet(void) const {
