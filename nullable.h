@@ -2,7 +2,7 @@ template <typename ObjectType>
 class Nullable {
 public:
     Nullable(void) : _value(), _isSet(false) {}
-    Nullable(ObjectType* value) : _value(value), _isSet(false) {}
+    Nullable(ObjectType* value) : _value(value), _isSet(true) {}
     Nullable(const Nullable& nullable) : _value(nullable._value), _isSet(nullable._isSet) {}
     ~Nullable(void) { release() ; }
 
